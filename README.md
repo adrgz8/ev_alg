@@ -27,8 +27,26 @@ It is possible to plot results by adding
 --plotting
 ```
 
-It is also possible to compare all Evolutionary Algorithms with all Optimization Problems. (This will plot results by default)
+To compare all Evolutionary Algorithms with all Optimization Problems. (This will plot results by default):
 
 ```python
 python main.py --compare_all
+```
+
+It is possible to change the parameters for the Evolutionary Algorithm.
+The default parameters are:
+
+```python
+length = 50
+N = 100
+epochs = 100
+lr = 0.1
+mutation = 0.02
+shift = 0.05
+```
+
+For example, if we want to have bigger N, more epochs and decrease learning rate:
+
+```python
+python main.py --compare_all --N 200 --epochs 1000 --lr 0.2
 ```
