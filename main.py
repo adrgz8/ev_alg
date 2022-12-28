@@ -53,6 +53,48 @@ def main():
         help='Plot results',
         required=False
     )
+    parser.add_argument(
+        '--length',
+        type=int,
+        help='Choose length of the sequence',
+        default=50,
+        required=False
+    )
+    parser.add_argument(
+        '--N',
+        type=int,
+        help='Choose N size',
+        default=100,
+        required=False
+    )
+    parser.add_argument(
+        '--epochs',
+        type=int,
+        help='Choose number of epochs',
+        default=100,
+        required=False
+    )
+    parser.add_argument(
+        '--lr',
+        type=float,
+        help='Choose learning rate',
+        default=0.1,
+        required=False
+    )
+    parser.add_argument(
+        '--mutation',
+        type=float,
+        help='Choose mutation probability',
+        default=0.02,
+        required=False
+    )
+    parser.add_argument(
+        '--shift',
+        type=float,
+        help='Choose mutatin shift',
+        default=0.05,
+        required=False
+    )
     args = parser.parse_args()
 
     # Running algorithm
@@ -61,12 +103,12 @@ def main():
         for ea_solver in EA_OPTIONS.values():
             for opt_prob in OPT_PROB.values():
                 max_vals = ea_solver(
-                    length=50,
-                    N=100,
-                    lr=0.1,
-                    mutation=0.02,
-                    shift=0.05,
-                    epochs=100,
+                    length=args.length,
+                    N=args.N,
+                    lr=args.lr,
+                    mutation=args.mutation,
+                    shift=args.shift,
+                    epochs=args.epochs,
                     method=opt_prob,
                     verbose=False
                 )
@@ -74,12 +116,12 @@ def main():
         plots.plotting(all_max_vals, OPT_PROB.keys(), EA_OPTIONS.keys())
     else:
         max_vals = EA_OPTIONS[args.ea](
-                    length=50,
-                    N=100,
-                    lr=0.1,
-                    mutation=0.02,
-                    shift=0.05,
-                    epochs=100,
+                    length=args.length,
+                    N=args.N,
+                    lr=args.lr,
+                    mutation=args.mutation,
+                    shift=args.shift,
+                    epochs=args.epochs,
                     method=OPT_PROB[args.opt_prob],
                     verbose=False
                     )
