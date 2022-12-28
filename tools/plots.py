@@ -26,7 +26,6 @@ def plotting(vals, opt_probs, ea_algs):
             algorithm or Dict keys when comparing among all the algorithms
             and objective functions
     """
-    print(ea_algs)
     if len(vals) == 1:
         plt.plot(vals[0], label=opt_probs)
         plt.xlabel('Number of epochs')
